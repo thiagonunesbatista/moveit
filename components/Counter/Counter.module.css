@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper p,
+.wrapper div {
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 600;
+  font-size: 6.25rem;
+  color: var(--title);
+}
+
+.wrapper p {
+  margin: 0 8px;
+}
+
+.wrapper div {
+  font-size: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.unitTime {
+  background-color: var(--white);
+  height: 9rem;
+  width: 100%;
+}
+
+.unitTime:nth-child(1),
+.unitTime:nth-child(4) {
+  border-right: 2px solid var(--background);
+}

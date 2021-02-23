@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper img + div p:first-child {
+  color: var(--title);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+.wrapper img + div p:not(:first-child) {
+  color: var(--text);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.wrapper div > div {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper div > div img {
+  height: 1rem;
+  width: 1rem;
+  margin-right: 8px;
+}
+
+.wrapper img {
+  width: 5.5rem;
+  border-radius: 50%;
+  margin-right: 24px;
+}

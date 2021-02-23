@@ -1,0 +1,18 @@
+.wrapper {
+  color: var(--text);
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 1.125rem;
+}
+
+.wrapper > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.wrapper > div:last-child {
+  background-color: var(--gray-line);
+  height: 1.5px;
+}

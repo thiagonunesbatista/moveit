@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  max-width: 955px;
+  flex: 1;
+  margin: 0 auto;
+  width: 100%;
+  /* align-items: center; */
+}
+
+.wrapper span {
+  font-size: 1rem;
+}
+
+.wrapper > div {
+  background-color: var(--gray-line);
+  width: 100%;
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  max-width: 800px;
+  position: relative;
+  margin: 0 1.5rem;
+}
+
+.wrapper > div > div {
+  height: 4px;
+  border-radius: 4px;
+  background: var(--green);
+}
+
+.wrapper > div > div + span {
+  position: absolute;
+  top: 12px;
+  transform: translateX(-50%);
+}
