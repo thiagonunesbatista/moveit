@@ -1,16 +1,75 @@
 .wrapper {
+  height: 100%;
+  width: 100%;
+  background-color: var(--white);
+  text-align: center;
+  padding: 25px 56px 32px;
+}
+.beforeBeginWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--white);
-  text-align: center;
-  height: 100%;
-  width: 100%;
 }
 
-.wrapper img {
+.beforeBeginWrapper img {
   height: 80px;
   width: 60px;
   margin: 4rem 0 1rem;
+}
+
+.challengeWrapper {
+  position: relative;
+}
+
+.challengeWrapper .title {
+  font-weight: 600;
+  font-size: 1.875rem;
+  padding-bottom: 8px;
+  color: var(--title);
+}
+
+.challengeWrapper .description {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.625rem;
+  color: var(--text);
+}
+
+.gainXP {
+  color: var(--blue);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #dcdde0;
+  margin-bottom: 38px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  width: calc(100% - 112px);
+  position: absolute;
+  bottom: 0;
+  margin-top: 38px;
+}
+
+.buttonsWrapper button {
+  height: 50px;
+  color: var(--white);
+  border-radius: 5px;
+  border: none;
+  flex: 1;
+  margin-bottom: 32px;
+  font-weight: 600;
+  line-height: 1.1875rem;
+}
+
+.buttonsWrapper button:first-child {
+  background-color: var(--red);
+  margin-right: 8px;
+}
+
+.buttonsWrapper button:last-child {
+  background-color: var(--green);
 }

@@ -1,6 +1,10 @@
 import CssProfile from './styles.module.css'
 
+import { useChallenges } from '../../contexts/ChallengesContext'
+
 const Profile = () => {
+  const { level } = useChallenges()
+
   return (
     <div className={CssProfile.wrapper}>
       <img
@@ -12,7 +16,7 @@ const Profile = () => {
         <p>Thiago Nunes Batista</p>
         <div>
           <img src='/up.svg' />
-          <p>Level 10</p>
+          <p>Level {level}</p>
         </div>
       </div>
     </div>
