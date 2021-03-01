@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import {
   createContext,
   ReactNode,
@@ -5,6 +6,8 @@ import {
   useEffect,
   useState
 } from 'react'
+
+import LevelUpModal from '../components/LevelUpModal'
 
 import challenges from '../challenges.json'
 
@@ -14,6 +17,9 @@ export const useChallenges = () => useContext(Context)
 
 interface ChallengesContextProps {
   children: ReactNode
+  completedChallenges: number
+  currentExperience: number
+  level: number
 }
 
 interface Challenge {
@@ -32,15 +38,30 @@ interface ChallengesContextData {
   levelUp: () => void
   resetChallenge: () => void
   startNewChallenge: () => void
+  setShowLevelUpModal: (boolean) => void
+  showLevelUpModal: boolean
 }
 
-const ChallengesContext = ({ children }: ChallengesContextProps) => {
-  const [level, setLevel] = useState(1)
-  const [currentExperience, setCurrentExperience] = useState(0)
-  const [completedChallenges, setCompletedChallenges] = useState(0)
+const ChallengesContext = ({
+  completedChallenges: completedChallengesProps,
+  currentExperience: currentExperienceProps,
+  level: levelProps,
+  children
+}: ChallengesContextProps) => {
+  const [level, setLevel] = useState(levelProps || 1)
+  const [currentExperience, setCurrentExperience] = useState(
+    currentExperienceProps || 0
+  )
+  const [completedChallenges, setCompletedChallenges] = useState(
+    completedChallengesProps || 0
+  )
   const [currentChallenge, setCurrentChallenge] = useState(null)
+  const [showLevelUpModal, setShowLevelUpModal] = useState(true)
 
-  const levelUp = () => setLevel(current => (current += 1))
+  const levelUp = () => {
+    setLevel(current => (current += 1))
+    setShowLevelUpModal(true)
+  }
 
   const resetChallenge = () => setCurrentChallenge(null)
 
@@ -61,7 +82,7 @@ const ChallengesContext = ({ children }: ChallengesContextProps) => {
     }
     setCurrentChallenge(null)
     setCurrentExperience(finalExperience)
-    setCompletedChallenges(current => current++)
+    setCompletedChallenges(current => (current += 1))
   }
 
   const startNewChallenge = () => {
@@ -84,6 +105,12 @@ const ChallengesContext = ({ children }: ChallengesContextProps) => {
     Notification.requestPermission()
   }, [])
 
+  useEffect(() => {
+    Cookies.set('level', String(level))
+    Cookies.set('completedChallenges', String(completedChallenges))
+    Cookies.set('currentExperience', String(currentExperience))
+  }, [level, currentExperience, completedChallenges])
+
   return (
     <Context.Provider
       value={{
@@ -95,10 +122,13 @@ const ChallengesContext = ({ children }: ChallengesContextProps) => {
         level,
         levelUp,
         resetChallenge,
-        startNewChallenge
+        startNewChallenge,
+        setShowLevelUpModal,
+        showLevelUpModal
       }}
     >
       {children}
+      {showLevelUpModal && <LevelUpModal />}
     </Context.Provider>
   )
 }
