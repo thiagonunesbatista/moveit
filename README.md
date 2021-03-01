@@ -1,6 +1,8 @@
 # 🎯 Moveit
 
-<p align="center">
+<img src="https://raw.githubusercontent.com/thiagonunesbatista/moveit/main/github-assets/moveit-cover.png" />
+
+<p align="center" style="margin: 32px 0">
  <img alt="Size" src="https://img.shields.io/github/repo-size/thiagonunesbatista/moveit?color=2567C2">
 
   <img alt="Last commit" src="https://img.shields.io/github/last-commit/thiagonunesbatista/moveit?color=2567C2">
@@ -8,7 +10,7 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-2567C2">
 </p>
 
-It's an application developed during the Next Level Week - Edition 04 from [RocketSeat](https://rocketseat.com.br/). It's an event of one week where the challenge is to learn and [develop an application](https://www.figma.com/file/27Uy5iONgvh5dvLBRtRVNO/Move.it-1.0-Thiago-Nunes-Batista-Copy).
+It's an application developed during the Next Level Week - Edition 04 from [RocketSeat](https://rocketseat.com.br/). It's an event of one week where the challenge is to learn and [develop an application](https://www.figma.com/file/27Uy5iONgvh5dvLBRtRVNO/Move.it-1.0-Thiago-Nunes-Batista-Copy). In this app you will start a countdown and when the countdown finishes you will receive a challenge, a physical exercise for you to do and relax your muscles. If you complete the challenge you will receive experience that will help you to go to the next level.
 
 ## 👷 Technologies
 
@@ -20,7 +22,7 @@ This project was developed using the following technologies
 
 ## 🔗 Deploy
 
-Deploy was made using [Vercel](https://vercel.com/). It's available [here](https://moveit-thiago-nunes-batista.vercel.app)
+Deploy was made using [Vercel](https://vercel.com/). It's available [here](https://moveit-thiago-nunes-batista.vercel.app).
 
 ## 💻 Moveit Desktop
 
