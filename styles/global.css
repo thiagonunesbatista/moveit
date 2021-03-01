@@ -55,8 +55,8 @@ a {
   }
 }
 
-@media (max-width: 720px) {
+@media (max-width: 750px) {
   html {
-    font-size: 87.5%;
+    font-size: 85%;
   }
 }

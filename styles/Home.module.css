@@ -3,12 +3,10 @@
   height: 100%;
 }
 
-.rightContainer {
-}
-
 .leftContainer,
 .rightContainer {
   margin-top: 110px;
+  min-height: 500px;
 }
 
 .completedChallenges {
@@ -22,6 +20,7 @@
 .sectionWrapper {
   display: flex;
   justify-content: space-between;
+  padding-bottom: 0.5rem;
 }
 
 .sectionWrapper > * {
@@ -31,4 +30,31 @@
 
 .sectionWrapper > *:first-child {
   margin-right: 90px;
+}
+
+@media (max-width: 750px) {
+  .sectionWrapper {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sectionWrapper > *:first-child {
+    margin-right: 0px;
+  }
+
+  .sectionWrapper > *:not(:first-child) {
+    margin-top: 0px;
+  }
+
+  .leftContainer,
+  .rightContainer {
+    width: 100%;
+  }
+}
+
+@media (max-width: 750px) and (min-width: 600px) {
+  .sectionWrapper {
+    padding: 0 2rem;
+  }
 }

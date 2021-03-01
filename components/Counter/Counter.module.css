@@ -48,13 +48,13 @@
   background-color: var(--red);
 }
 
+.wrapper + button:not(:disabled):hover svg path {
+  fill: var(--white);
+}
+
 .leaveCycle {
   background-color: var(--white);
   color: var(--title);
-}
-
-.leaveCycle div {
-  fill: #f0f !important;
 }
 
 .leaveCycle:not(:disabled):hover {

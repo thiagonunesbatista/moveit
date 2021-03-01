@@ -1,18 +1,24 @@
-import Image from 'next/image'
 import { Fragment, useEffect, useState } from 'react'
 
 import Button from '../Button'
 
 import { useChallenges } from '../../contexts/ChallengesContext'
 
+import PlayArrow from '../../public/play_arrow.svg'
+import TimesIcon from '../../public/times.svg'
+
 import CSSCounter from './Counter.module.css'
 
 const Counter = ({ className }) => {
   const [time, setTime] = useState(60 * 0.05)
-  const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinished] = useState(false)
 
-  const { currentChallenge, startNewChallenge } = useChallenges()
+  const {
+    currentChallenge,
+    isActiveTimer,
+    setIsActiveTimer,
+    startNewChallenge
+  } = useChallenges()
 
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -21,7 +27,7 @@ const Counter = ({ className }) => {
   const [leftSeconds, rightSeconds] = String(seconds).padStart(2, '0').split('')
 
   useEffect(() => {
-    if (isActive && time > 0) {
+    if (isActiveTimer && time > 0) {
       const timer = setTimeout(() => {
         setTime(current => --current)
       }, 1000)
@@ -29,16 +35,16 @@ const Counter = ({ className }) => {
       return () => clearTimeout(timer)
     } else if (time === 0) {
       setHasFinished(true)
-      setIsActive(false)
+      setIsActiveTimer(false)
       startNewChallenge()
     } else {
       setTime(60 * 0.05)
     }
-  }, [time, isActive])
+  }, [time, isActiveTimer])
 
   useEffect(() => {
     if (!currentChallenge) {
-      setIsActive(false)
+      setIsActiveTimer(false)
       setHasFinished(false)
       setTime(60 * 25)
     }
@@ -54,22 +60,21 @@ const Counter = ({ className }) => {
         <div className={CSSCounter.unitTime}>{rightSeconds}</div>
       </div>
       <Button
-        onClick={() => (isActive ? setIsActive(false) : setIsActive(true))}
-        className={isActive && CSSCounter.leaveCycle}
+        onClick={() =>
+          isActiveTimer ? setIsActiveTimer(false) : setIsActiveTimer(true)
+        }
+        className={isActiveTimer && CSSCounter.leaveCycle}
         disabled={hasFinished}
       >
         <p>
-          {isActive
+          {isActiveTimer
             ? 'Abandonar ciclo'
             : hasFinished
             ? 'Ciclo encerrado'
             : 'Iniciar um ciclo'}
         </p>
-        <Image
-          width='14px'
-          height='14px'
-          src={isActive ? '/times.svg' : '/play_arrow.svg'}
-        />
+
+        {isActiveTimer ? <TimesIcon /> : <PlayArrow />}
       </Button>
     </Fragment>
   )

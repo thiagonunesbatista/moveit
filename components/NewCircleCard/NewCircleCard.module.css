@@ -1,10 +1,12 @@
 .wrapper {
+  min-height: inherit;
   height: 100%;
   width: 100%;
   background-color: var(--white);
   text-align: center;
-  padding: 25px 56px 32px;
+  padding: 1.56rem 3.5rem 2rem;
 }
+
 .beforeBeginWrapper {
   display: flex;
   flex-direction: column;
@@ -72,4 +74,28 @@
 
 .buttonsWrapper button:last-child {
   background-color: var(--green);
+}
+
+.activeTimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.activeTimer img {
+  margin: 0;
+}
+
+@media (max-width: 750px) {
+  .buttonsWrapper {
+    position: static;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .wrapper {
+    padding: 0.78rem 1.75rem 1rem;
+  }
 }

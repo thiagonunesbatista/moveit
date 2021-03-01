@@ -34,9 +34,11 @@ interface ChallengesContextData {
   currentChallenge: Challenge
   currentExperience: number
   experienceToNextLevel: number
+  isActiveTimer: boolean
   level: number
   levelUp: () => void
   resetChallenge: () => void
+  setIsActiveTimer: (boolean) => void
   startNewChallenge: () => void
   setShowLevelUpModal: (boolean) => void
   showLevelUpModal: boolean
@@ -57,6 +59,7 @@ const ChallengesContext = ({
   )
   const [currentChallenge, setCurrentChallenge] = useState(null)
   const [showLevelUpModal, setShowLevelUpModal] = useState(true)
+  const [isActiveTimer, setIsActiveTimer] = useState(false)
 
   const levelUp = () => {
     setLevel(current => (current += 1))
@@ -119,10 +122,12 @@ const ChallengesContext = ({
         currentChallenge,
         currentExperience,
         experienceToNextLevel,
+        isActiveTimer,
         level,
         levelUp,
         resetChallenge,
         startNewChallenge,
+        setIsActiveTimer,
         setShowLevelUpModal,
         showLevelUpModal
       }}

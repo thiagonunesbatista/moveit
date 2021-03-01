@@ -1,28 +1,34 @@
 import Image from 'next/image'
+import { Fragment } from 'react'
 import { useChallenges } from '../../contexts/ChallengesContext'
 
 import CSSNewCircleCard from './NewCircleCard.module.css'
 
-const BeforeBegin = () => {
+type beforeBeginprops = { started: boolean }
+
+const BeforeBegin = ({ started }: beforeBeginprops) => {
   return (
     <div
       className={`${CSSNewCircleCard.beforeBeginWrapper} ${CSSNewCircleCard.wrapper}`}
     >
-      {/* antes de iniciar */}
-      <p>
-        Inicie um ciclo
-        <br />
-        para receber desafios
-        <br />
-      </p>
+      {!started ? (
+        <Fragment>
+          <p>Inicie um ciclo para receber desafios a serem completados</p>
 
-      <img src='/up_cycle.svg' />
+          <div className={CSSNewCircleCard.activeTimer}>
+            <img src='/up_cycle.svg' />
+            <p>Complete-os e ganhe experiência e avance de leve.</p>
+          </div>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <p>Inicie um ciclo para receber desafios</p>
 
-      <p>
-        Avance de level completando
-        <br />
-        os desafios
-      </p>
+          <img src='/up_cycle.svg' />
+
+          <p>Avance de level completando os desafios</p>
+        </Fragment>
+      )}
     </div>
   )
 }
@@ -31,11 +37,12 @@ const NewCircleCard = () => {
   const {
     completeChallenge,
     currentChallenge,
+    isActiveTimer,
     resetChallenge
   } = useChallenges()
 
   if (!currentChallenge) {
-    return <BeforeBegin />
+    return <BeforeBegin started={isActiveTimer} />
   }
 
   return (

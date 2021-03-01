@@ -10,6 +10,7 @@ import Profile from '../components/Profile'
 import ChallengesContext from '../contexts/ChallengesContext'
 
 import CSSHome from '../styles/Home.module.css'
+import { Fragment } from 'react'
 
 interface HomeProps {
   completedChallenges: number
@@ -24,7 +25,7 @@ const Home = ({ completedChallenges, currentExperience, level }: HomeProps) => {
       currentExperience={currentExperience}
       level={level}
     >
-      <div>
+      <Fragment>
         <ExperienceBar />
 
         <section className={CSSHome.sectionWrapper}>
@@ -38,7 +39,7 @@ const Home = ({ completedChallenges, currentExperience, level }: HomeProps) => {
             <NewCircleCard />
           </div>
         </section>
-      </div>
+      </Fragment>
     </ChallengesContext>
   )
 }
