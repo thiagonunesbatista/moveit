@@ -36,7 +36,6 @@ interface ChallengesContextData {
   experienceToNextLevel: number
   isActiveTimer: boolean
   level: number
-  levelUp: () => void
   resetChallenge: () => void
   setIsActiveTimer: (boolean) => void
   startNewChallenge: () => void
@@ -58,7 +57,7 @@ const ChallengesContext = ({
     completedChallengesProps || 0
   )
   const [currentChallenge, setCurrentChallenge] = useState(null)
-  const [showLevelUpModal, setShowLevelUpModal] = useState(true)
+  const [showLevelUpModal, setShowLevelUpModal] = useState(false)
   const [isActiveTimer, setIsActiveTimer] = useState(false)
 
   const levelUp = () => {
@@ -109,7 +108,6 @@ const ChallengesContext = ({
   }, [])
 
   useEffect(() => {
-    Cookies.set('level', String(level))
     Cookies.set('completedChallenges', String(completedChallenges))
     Cookies.set('currentExperience', String(currentExperience))
   }, [level, currentExperience, completedChallenges])
@@ -124,7 +122,6 @@ const ChallengesContext = ({
         experienceToNextLevel,
         isActiveTimer,
         level,
-        levelUp,
         resetChallenge,
         startNewChallenge,
         setIsActiveTimer,
